@@ -1,0 +1,191 @@
+/* Space out content a bit */
+
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #E9EAED;
+}
+a {
+    cursor: pointer;
+}
+.header,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.header {
+    border-bottom: 1px solid #d3d6db;
+}
+.header h3 {
+    padding-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+.content {
+    min-height: 420px;
+}
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #d3d6db;
+}
+.trans03 {
+    transition: .3s all;
+    -webkit-transition: .3s all;
+    -moz-transition: .3s all;
+}
+.notes > li {
+    display: block;
+    float: left;
+    width: 33.33%;
+    padding: 7px;
+}
+.notes > li .block {
+    border: 1px solid #d3d6db;
+    border-radius: 3px;
+    background: #fff;
+    opacity: 0.9;
+}
+.notes > li .block:hover {
+    opacity: 1;
+    border-color: #ccc;
+    box-shadow: 0 0 7px #ddd;
+}
+.notes > li .block h4 {
+    background: #f6f7f8;
+    border-bottom: 1px solid #e9eaed;
+    padding: 10px 15px;
+    margin: 0;
+    color: #6a7480;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.notes > li .block p {
+    padding: 5px 14px;
+    font-size: 14px;
+    margin: 5px 0 4px;
+}
+.notes > li .block .bottom-part {
+    border-top: 1px solid #e9eaed;
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 12px;
+    padding: 8px 0;
+    color: #aaa;
+}
+.notes > li .block .bottom-part label {
+    font-weight: normal;
+}
+.notes .view-full {
+    color: #999;
+    text-decoration: none;
+    opacity: 0;
+}
+.notes .view-full:hover {
+    color: #333;
+}
+.notes .view-full:active,
+.notes .view-full:focus {
+    color: #428bca;
+}
+.notes > li .block:hover .view-full {
+    opacity: 1;
+}
+/** Bootstrap modal box modification */
+
+.modal-content {
+    border-radius: 3px;
+}
+.modal-content .modal-header {
+    background: #f6f7f8;
+    border-bottom-color: #e9eaed;
+    padding: 10px 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.modal-content .modal-header h4 {
+    font-size: 15px;
+    line-height: 18px;
+}
+.modal-content .note-date {
+    margin-top: 25px;
+    padding: 10px 0;
+    border-top: 1px solid #e9eaed;
+    line-height: 16px;
+    color: #aaa;
+}
+.modal-content .note-date label {
+    font-weight: normal;
+}
+.modal-content form .form-control {
+    border: 1px solid #e5e5e5;
+    box-shadow: none!important;
+    border-radius: 0;
+    border-style: dotted;
+    margin-bottom: 10px;
+}
+.modal-content form .form-control:focus {
+    border-color: #aaa;
+}
+.modal-content .button-wrapper {
+    margin: 25px -15px 0;
+    padding: 15px 15px 0;
+    border-top: 1px solid #e5e5e5;
+    text-align: right;
+}
+button.btn {
+    padding: 3px 12px;
+    border-radius: 2px;
+}
+.modal-content .button-wrapper .btn {
+    margin-left: 5px;
+}
+a.edit-note {
+    font-size: 12px;
+    display: inline-block;
+    padding: 1px 4px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+#input-note-title {
+    font-weight: bold;
+}
+#input-note-text {
+    max-width: 100%;
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    
+    .header,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    
+    .header {
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 667px) {
+    .notes > li {
+        width: 50%;
+    }
+}
+@media (max-width: 480px) {
+    .notes > li {
+        width: 100%;
+        float: none;
+    }
+}
