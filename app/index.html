@@ -12,7 +12,7 @@
     <title>NotesApp</title>
 
     <link href="css/all.packages.css" rel="stylesheet">
-    <link href="css/all.app.css" rel="stylesheet">
+    <link href="css/all.app.css?v=1" rel="stylesheet">
 </head>
 
 <body ng-controller="NotesController">
@@ -20,7 +20,9 @@
         <div class="header">
             <ul class="nav nav-pills pull-right">
                 <li>
-                    <a> <span class="glyphicon glyphicon-plus"></span> Create Note</a>
+                    <a data-target="#note-modal-box" data-toggle="modal" ng-click="createNote()">
+                        <span class="glyphicon glyphicon-plus" ng-click="createNote()"></span> Create Note
+                    </a>
                 </li>
             </ul>
             <h3 class="text-muted">NotesApp</h3>
@@ -34,7 +36,16 @@
                     <div class="block trans03" data-note-id="{{ note.id }}">
                         <h4>
                         	{{ note.title }}
-                        	<a data-target="#note-modal-box" data-toggle="modal" class="pull-right glyphicon glyphicon-fullscreen view-full" title="View"></a>
+                        	
+                        	<a class="pull-right 
+                        	glyphicon glyphicon-trash hover-showup"
+                        	title="Delete Note" ng-click="deleteNote(note.id)"></a>
+
+                        	<a data-target="#note-modal-box" 
+                        	data-toggle="modal" 
+                        	class="pull-right glyphicon glyphicon-fullscreen hover-showup" 
+                        	title="View Note" ng-click="viewNote(note.id)"></a>
+
                         </h4>
                         <p>{{ note.previewText }}</p>
                         <div class="bottom-part">
@@ -46,35 +57,55 @@
                 </li>
 
             </ul>
+
+            <div ng-show="(noteList.length == 0)" class="alert alert-info" role="alert">There are no notes to show</div>
         </div>
 
         <div class="footer">
-            <p>© Copyright 2014</p>
+            <p>
+                <a href="https://github.com/kabir-baidhya/NotesApp">NotesApp</a> 2015 | A demo app built with <a href="https://angularjs.org/">Angular</a> | by <a href="https://github.com/kabir-baidhya/NotesApp">Kabir</a>
+            </p>
         </div>
 
     </div>
 
-    <div class="modal fade" id="note-modal-box" role="dialog" aria-labelledby="note-modal-boxLabel" aria-hidden="true">
+    <div class="modal fade" id="note-modal-box" tabindex="-1" role="dialog" aria-labelledby="note-modal-boxLabel" aria-hidden="true" ng-controller="ModalController">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                     </button>
-                    <a class="edit-note pull-right">
+                    <a class="edit-note pull-right" ng-click="editNote()" ng-if="modalBox.type == 'view'">
                         <span class="glyphicon glyphicon-ok-sign"></span> Edit
                     </a>
-                    <h4 class="modal-title" id="note-modal-boxLabel">Note Title</h4>
+                    <h4 class="modal-title" id="note-modal-boxLabel">{{ modalBox.title }}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <div class="text-left note-date">
-                        <span class="glyphicon glyphicon-ok-sign"></span>
-                        <label>Wrote on</label>
-                        <span> July 13, 2014</span>
-                    </div>
+                    <section ng-if="modalBox.type == 'view'">
+                        <p>{{ activeNote.text }}</p>
+                        <div class="text-left note-date">
+                            <span class="glyphicon glyphicon-ok-sign"></span>
+                            <label>Wrote on </label> <span>{{ activeNote.createdAt }}</span>
+                        </div>
+                    </section>
+                    <section ng-if="modalBox.type == 'edit' || modalBox.type == 'create'">
+                        <form class="form-horizontal" role="form">
+                            <input type="hidden" ng-model="form.id">
+                            <input type="text" class="form-control" ng-model="form.title" placeholder="Title" id="input-note-title">
+                            <textarea class="form-control" ng-model="form.text" rows="5" id="input-note-text" placeholder="Add Note"></textarea>
+                            <div class="button-wrapper">
+                                <div ng-if="modalBox.type == 'edit'">
+                                    <button type="button" class="btn btn-primary" ng-click="editSave()">Save</button>
+                                    <button type="button" class="btn btn-default" ng-click="editCancel()">Cancel</button>
+                                </div>
+                                <div ng-if="modalBox.type == 'create'">
+                                    <button type="button" class="btn btn-primary" ng-click="createSave()">Add Note</button>
+                                    <button type="button" class="btn btn-default" ng-click="createCancel()">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
                 </div>
             </div>
         </div>

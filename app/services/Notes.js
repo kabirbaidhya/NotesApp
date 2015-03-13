@@ -9,7 +9,8 @@
             fetch: fetch,
             create: create,
             update: update,
-            destroy: destroy
+            destroy: destroy,
+            findInList: findInList
         };
 
         function fetchAll() {
@@ -44,6 +45,22 @@
 
             return $http.delete(url);
         }
+
+        function findInList(noteId, list) {
+
+            var noteItem = null;
+            for (var i = 0; i < list.length; i++) {
+                var item = list[i];
+
+                if (item.id == noteId) {
+                    noteItem = item;
+                    break;
+                }
+            }
+
+            return noteItem;
+        }
+
     });
 
 })();

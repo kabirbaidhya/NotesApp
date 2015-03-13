@@ -77,8 +77,8 @@ var assets = {
                 .pipe(plugins.connect.reload());
         });
 
-        gulp.watch(['./app/**/*.js', '!./app/**/*test.js'], ['scripts']);
-        gulp.watch('./app/**/*.css', ['css']);
+        gulp.watch(['./app/**/*.js'], ['scripts']);
+        gulp.watch('./assets/**/*.css', ['css']);
         gulp.watch('./app/index.html', ['copy-index']);
 
     });
