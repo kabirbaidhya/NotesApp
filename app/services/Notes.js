@@ -5,20 +5,20 @@
     app.factory('Notes', function($http, App) {
 
         return {
-            all: getAll,
+            fetchAll: fetchAll,
+            fetch: fetch,
             create: create,
-            get: get,
             update: update,
             destroy: destroy
         };
 
-        function getAll() {
+        function fetchAll() {
             var url = App.apiUrl('notes');
 
             return $http.get(url);
         }
 
-        function get(id) {
+        function fetch(id) {
             var url = App.apiUrl('notes/' + id);
 
             return $http.get(url);
@@ -45,4 +45,5 @@
             return $http.delete(url);
         }
     });
+
 })();

@@ -2,8 +2,7 @@
 
     var app = angular.module('notesApp');
 
-    app.controller('NotesController', function($scope, $http) {
-
+    app.controller('NotesController', function($scope) {
 
     });
 })();
