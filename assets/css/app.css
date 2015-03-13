@@ -68,6 +68,7 @@ a {
     padding: 5px 14px;
     font-size: 14px;
     margin: 5px 0 4px;
+    min-height: 55px;
 }
 .notes > li .block .bottom-part {
     border-top: 1px solid #e9eaed;
@@ -80,19 +81,20 @@ a {
 .notes > li .block .bottom-part label {
     font-weight: normal;
 }
-.notes .view-full {
+.notes .hover-showup {
     color: #999;
     text-decoration: none;
     opacity: 0;
+    margin-left: 10px;
 }
-.notes .view-full:hover {
+.notes .hover-showup:hover {
     color: #333;
 }
-.notes .view-full:active,
-.notes .view-full:focus {
+.notes .hover-showup:active,
+.notes .hover-showup:focus {
     color: #428bca;
 }
-.notes > li .block:hover .view-full {
+.notes > li .block:hover .hover-showup {
     opacity: 1;
 }
 /** Bootstrap modal box modification */
@@ -156,6 +158,9 @@ a.edit-note {
 }
 #input-note-text {
     max-width: 100%;
+}
+.alert.alert-info {
+    background: #f6f7f8;
 }
 @media (min-width: 768px) {
     .container {
