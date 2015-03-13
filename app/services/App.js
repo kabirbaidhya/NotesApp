@@ -7,11 +7,11 @@
     app.factory('App', function($http) {
 
         return {
-            apiUrl: getApiUrl
+            apiUrl: function getApiUrl(path) {
+                return apiBase + (path || '');
+            }
         };
 
-        function getApiUrl(path) {
-            return apiBase + (path || '');
-        }
+
     });
 })();
